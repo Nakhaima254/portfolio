@@ -7,29 +7,58 @@
     <style>
         /* Hamburger styles */
         .hamburger {
-            display: none !important;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 20;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            margin: 4px 0;
+            background: var(--orange-color);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .nav-toggle {
+            display: none;
         }
         @media (max-width: 768px) {
-            nav ul {
-                display: flex !important;
-                flex-direction: row;
-                position: static;
-                background: rgba(10,25,47,0.85);
-                width: 100%;
-                padding: 0.5rem 0;
-                gap: 32px;
+            .hamburger {
+                display: flex;
+                position: absolute;
+                right: 16px;
+                top: 10px;
+            }
+            #main-nav {
+                display: none;
+                flex-direction: column;
+                background: rgba(10,25,47,0.97);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100vw;
+                padding: 24px 0;
+                gap: 24px;
+                z-index: 15;
+            }
+            .nav-toggle:checked ~ #main-nav {
+                display: flex;
             }
             .dropdown-content {
-                position: absolute;
-                left: 0;
-                top: 100%;
-                background: rgba(10,25,47,0.97);
-                min-width: 180px;
-                box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-                border-radius: 0 0 12px 12px;
-                z-index: 100;
-                flex-direction: column;
-                padding: 0;
+                position: static;
+                box-shadow: none;
+                background: none;
+                min-width: 0;
+                border-radius: 0;
+                padding-left: 24px;
             }
         }
         :root {
@@ -178,8 +207,34 @@
         .dropdown {
             position: relative;
         }
-        .dropdown-toggle:checked ~ .dropdown-content {
-            display: flex;
+        .dropdown-toggle {
+            display: none;
+        }
+        /* Show dropdown on hover for desktop */
+        @media (min-width: 769px) {
+            .dropdown:hover > .dropdown-content,
+            .dropdown:focus-within > .dropdown-content {
+                display: flex;
+            }
+        }
+        /* Show dropdown on click for mobile */
+        @media (max-width: 768px) {
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                left: 0;
+                top: 100%;
+                background: rgba(10,25,47,0.97);
+                min-width: 180px;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+                border-radius: 0 0 12px 12px;
+                z-index: 100;
+                flex-direction: column;
+                padding: 0;
+            }
+            .dropdown-toggle:checked ~ .dropdown-content {
+                display: flex;
+            }
         }
         .dropdown-content {
             display: none;
@@ -496,7 +551,12 @@
 </head>
 <body>
     <nav>
-        <!-- Removed hamburger button -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+        <label for="nav-toggle" class="hamburger" aria-label="Open menu" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
         <ul id="main-nav">
             <li class="dropdown">
                 <input type="checkbox" id="about-toggle" class="dropdown-toggle" hidden>
