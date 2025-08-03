@@ -3,111 +3,661 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isaac Portfolio</title>
-    <ul>
-        <!-- HEADER SECTION -->
-        <li><a href="#About Me">About</a></li>
-        <li> <a href="#Education">Education</a></li>
-        <li><a href="#Interest">Interest</a></li>
-        <li><a href="#Skills">Skills</a></li>
-        <li><a href="#Projects">Projects</a></li>
-        <li><a href="#Contact">Contact</a></li>
-    </ul>
+    <title>Isaac Nakhaima</title>
+    <style>
+        /* Hamburger styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 20;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            margin: 4px 0;
+            background: var(--orange-color);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: rgba(10,25,47,0.97);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100vw;
+                padding: 24px 0;
+                gap: 24px;
+                z-index: 15;
+            }
+            nav ul.open {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+                position: absolute;
+                right: 16px;
+                top: 10px;
+            }
+        }
+        :root {
+            --blue-color: #0082fc;
+            --orange-color: #FF6700;
+            --neon-accent: #FF6700;
+            --text-white: #e6f1ff;
+            --text-gray: #dbdbdb;
+            --glass-bg: #01101f
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Inter', sans-serif;
+        }
+
+        body {
+            background: #011223;
+            color: var(--text-white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER STYLES */
+        header {
+            position: relative;
+            text-align: center;
+         
+            overflow: visible;
+  
+           
+        }
+         .header-links a:hover, .header-links a:focus {
+           color: var(--orange-color);
+           
+        }
+        .header-bg-holder {
+            width: 100vw;
+            min-width: 100%;
+            height: 500px;
+            background: url('Images/iMage.jpg') center/cover no-repeat;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            filter: brightness(0.6);
+        }
+        .header-content {
+            position: relative;
+            z-index: 1;
+            padding: 64px 0 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--neon-accent);
+            margin-bottom: 32px;
+            margin-top: 40px;
+            background: #fff;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: #011223;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+        .btn-group {
+            margin: 20px 0 0 0;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            z-index: 2;
+            color: #000000;
+            
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--neon-accent);
+            color: #ffffff;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,209,255,0.08);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover, .btn:focus {
+            background: #fff;
+            color: var(--dark-blue);
+            box-shadow: 0 4px 16px rgba(0,209,255,0.15);
+        }
+        nav {
+            width: 100%;
+            background: rgba(10,25,47,0.85);
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-radius: 0 0 16px 16px;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            list-style: none;
+        }
+        nav ul li a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 24px;
+            transition: background 0.2s, color 0.2s;
+        }
+        nav ul li a:hover, nav ul li a:focus {
+            background: none;
+            color: var(--orange-color);
+        }
+
+        section {
+            padding: 30px 0;
+        }
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(175, 175, 175, 0.849);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            padding: 20px;
+            box-shadow: 2px #dbdbdb;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--neon-accent);
+        }
+        .about-content p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        #skills {
+            padding: 30px 0;
+            padding-left: 20px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+        .skill-item {
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+            color: var(--neon-accent);
+        }
+        .skill-name {
+            font-weight: 500;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--neon-accent);
+        }
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--neon-accent);
+            border: 2px solid var(--orange-color);
+        }
+        .job-title {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        .job-company {
+            color: var(--neon-accent);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .job-date {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        .job-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        .interests-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .interest-item {
+            background: rgba(0, 209, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .project-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(0, 209, 255, 0.05);
+        }
+        .project-title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--neon-accent);
+        }
+        .project-description {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        /* FORM STYLES */
+        form {
+            background: #f4f4f4;
+            padding: 32px 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        form label {
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #000000;
+        }
+        form input, form select, form textarea {
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #fff;
+            transition: border 0.2s;
+        }
+        form input:focus, form select:focus, form textarea:focus {
+            border: 1.5px solid #0082FC;
+            outline: none;
+        }
+        form button[type="submit"] {
+            background: #FF6700;
+            color: #fff;
+            border: none;
+            padding: 12px 0;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        form button[type="submit"]:hover {
+            background: #0082FC;
+        }
+        /* FOOTER STYLES */
+        footer {
+            width: 100vw;
+            min-width: 100%;
+            background: #fff;
+            padding: 32px 0 24px 0;
+            text-align: center;
+            border-top: 1px solid #eee;
+            margin-top: 40px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--blue-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 24px;
+            margin: 0 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .footer-links a:hover, .footer-links a:focus {
+           color: var(--orange-color);
+           
+        }
+        footer ul {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            list-style: none;
+            margin-top: 12px;
+            padding: 0;
+        }
+        footer ul li img {
+            vertical-align: middle;
+            filter: grayscale(1);
+            transition: filter 0.2s;
+        }
+        footer ul li img:hover {
+            filter: grayscale(0);
+        }
+        @media (max-width: 1100px) {
+            .header-bg-holder, footer {
+                width: 100vw;
+                min-width: 100vw;
+            }
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            nav ul {
+                gap: 16px;
+            }
+            .header-bg-holder {
+                height: 180px;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            form {
+                padding: 16px 8px;
+            }
+            .header-bg-holder {
+                height: 120px;
+            }
+            .copyright-section{
+                color: #011223;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>MY PORTFOLIO</h1>
-<!-- ABOUT ME SECTION -->
-    <h2 id="About Me"> About Me</h2>
-    <p>
-        Hi! I'm Isaac Nakhaima, a passionate software developer and digital creative. 
-        I’m on a mission to build useful, user-centered applications that solve real-world problems.
-        My journey into tech started with a strong curiosity about how things work online and 
-        that curiosity has grown into a career fueled by design thinking, continuous learning, and code.
-    </p>
-    <p>What drives me? The ability to innovate, collaborate, and bring ideas to life through technology.</p>
-<!-- EDUCATION SECTION -->
-    <h3 id="Education">Educational Background</h3>
-    <p>
-        I’m currently enrolled in the PLP Software Engineering Bootcamp (July 2025 Cohort), 
-        where I'm gaining hands-on experience in full-stack development and real-world projects.
-    </p>
-    <ul>
-        <li>Bsc in Industrial Chemistry and Management</li>
-        <li>Certification in Graphic Design</li>
-    </ul>
-    <a href="https://drive.google.com/file/d/17FIlhnKM4bEONjnIe0Iu4mejQL7zeUo8/view?usp=sharing">Download My CV </a>
-    <!-- INTEREST SECTION -->
-    <h3 id="Interest"> Interests</h3>
-    <ul>
-        <li> <strong>Web Development</strong>: I'm deeply interested in creating responsive and visually appealing web applications using modern technologies.</li>
-        <li> <strong>Tech for Impact</strong>: I love leveraging digital tools to empower businesses and communities.</li>
-        <li><strong>Graphic Design</strong>: Crafting intuitive and user-friendly interfaces excites me.</li>
-        <li> <strong>Creative Content Creation</strong>: Merging tech with visual storytelling is a big passion of mine.</li>
-    </ul>
-    <!-- SKILLS SECTION -->
-    <h3 id="Skills">Skill Set</h3>
-    <P>Here are some of the skill sets and technologies I’m working with:</P>
-    <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>Python</li>
-        <li>MySQL</li>
-        <li>Git and Version Control</li>
-        <li>Responsive Design Principles</li>
-        <li>Adobe Products</li>
-
-    <h3 id="Projects">My Projects</h3>
-    <ol>
-        <li>
-            <strong>Portfolio Website</strong>
-            <p>A personal HTML and CSS-based website showcasing <a href="link"> my profile</a>, skills, and projects.</p>
-        </li>
-        <li>
-            <strong>Graphic Design Artwork</strong>
-            <p>Created a series of digital artworks using Adobe products, focusing on modern design trends.</p>
-            <a href="https://drive.google.com/file/d/17Gh715VJIIEIxT4etli1LTjIltdVuwOz/view?usp=sharing">My Portfolio</a>
-        </li>
-    </ol>
-    <h2 id="Contact">Contact Me</h2>
-    <p>Fill in the Contact to get in touch with me</p>
-    <form action="index.html" method="post">
-      <label for="first-name">First Name</label>
-      <input id="first-name" name="first-name" type="text" placeholder="First Name" />
-
-      <label for="last-name">Last Name</label>
-      <input id="last-name" name="last-name" type="text" placeholder="Last Name" required/>
-
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" placeholder="Enter Email" required />
-
-      <label for="phone-number">Phone Number</label>
-      <input id="phone-number" name="phone-number" type="tel" placeholder="Phone Number" required>
-
-      <label for="Service">Select Service</label>
-      <section id="Serviece" name="Service">
-        <select name="Service" id="Service">
-            <option value="Web Development">Web Development</option>
-            <option value="Graphic Design">Graphic Design</option>
-            <option value="Content Creation">Content Creation</option>
-            <option value="Consultation">Consultation</option>
-      </section>
-
-      <p>
-      <label for="additional-text">Additional Text</label>
-      <textarea name="additional-text" cols="30" rows="5" id="additional-text" minlength="300"></textarea> <p>
-        <button type="submit">Submit</button>
-        
-    </form>
-      
-</body>
-    <footer>
-        <p>&copy; 2025 Isaac Nakhaima</p>
-        <ul>
-            <li><a href="https://www.instagram.com/nakhaima.isaac/"><img src="svgs/instagram.svg" width="20px" alt="Instagram logo"></li></a>
-            <li><a href="https://www.facebook.com/sur.nakhaima"><img src="svgs/facebook.svg" width="20px" alt="Facebook logo"></li></a>
-            <li><a href="https://www.tiktok.com/@royal.graphics.so"><img src="svgs/tiktok.svg" width="20px" alt="TikTok logo"></a></li>
-            <li><a href="https://www.linkedin.com/in/isaac-nakhaima"><img src="svgs/linkedin.svg" width="20px" alt="LinkedIn logo"></a></li>
+    <nav>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul id="main-nav">
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#interests">Interests</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
+    </nav>
+    <!-- HEADER -->
+    <header>
+        <div class="header-bg-holder"></div>
+        <div class="header-content">
+            <img src="Images/PASSPORT.png"
+                alt="Isaac Nakhaima" class="profile-img">
+            <h1>Isaac Nakhaima</h1>
+            <p class="subtitle">Frontend Developer</p>
+            <div class="btn-group">
+                <a href="https://drive.google.com/file/d/17FIlhnKM4bEONjnIe0Iu4mejQL7zeUo8/view?usp=sharing" class="btn" download>Download CV</a>
+                <a href="#contact" class="btn">Contact Me</a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <!--  ABOUT  -->
+        <section id="about" class="glass-card">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I'm Isaac Nakhaima, a passionate software developer and digital creative. 
+                    I’m on a mission to build useful, user-centered applications that solve real-world problems.
+                </p>
+                <p>My journey into tech started with a strong curiosity about how things work online and 
+                    that curiosity has grown into a career fueled by design thinking, continuous learning, and code.</p>
+                <p> What drives me? The ability to innovate, collaborate, and bring ideas to life through technology.</p>
+            </div>
+        </section>
+
+        <!--  EDUCATION  -->
+        <section id="education" class="glass-card">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3 class="job-title">Web Development</h3>
+                    <p class="job-company">PLP Africa</p>
+                    <p class="job-date">2025 - Present</p>
+                    <p class="job-description">
+                        Currently learning web development technologies and best practices.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="job-title">Graphic Design</h3>
+                    <p class="job-company">Wayne Graphics</p>
+                    <p class="job-date">2023 - 2024</p>
+                    <p class="job-description">
+                        Studied Graphic Design with hands-on skills on Adobe products.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="job-title">Industrial Chemistry & Management</h3>
+                    <p class="job-company">Kenyatta University</p>
+                    <p class="job-date">2019 - Present</p>
+                    <p class="job-description">
+                        Continuing studies on high end industrial processes and managerial functions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!--  SKILLS  -->
+        <section id="skills" class="glass-card">
+            <h2 class="section-title">Skill Set</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-icon">⚡</div>
+                    <div class="skill-name">HTML</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🖌️</div>
+                    <div class="skill-name">CSS</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🎨</div>
+                    <div class="skill-name">Graphic Design</div>
+                </div>
+            </div>
+        </section>
+
+        <!--  EXPERIENCE  -->
+        <section id="experience" class="glass-card">
+            <h2 class="section-title">My Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3 class="job-title">Tutor</h3>
+                    <p class="job-company">Palazzolo Technical</p>
+                    <p class="job-date"></p>
+                    <p class="job-description">
+                        Trained students in Graphic Design, focusing on practical skills and real-world applications.
+                    </p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="job-title">Graphic Designer</h3>
+                    <p class="job-company">Royal Graphics</p>
+                    <p class="job-date">2023 - Present</p>
+                    <p class="job-description">
+                        Designed various digital assets including logos, banners, and social media graphics.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!--  PROJECTS  -->
+        <section id="projects" class="glass-card">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-item">
+                <h3 class="project-title">Portfolio Website</h3>
+                <p class="project-description">Worked on a personal HTML and CSS-based website showcasing my profile, skills, and projects.</p>
+            </div>
+            <div class="project-item">
+                <h3 class="project-title">Graphic Design</h3>
+                <p class="project-description">Designed various digital assets including logos, banners, and social media graphics.</p>
+            </div>
+        </section>
+
+        <!--  INTERESTS  -->
+        <section id="interests" class="glass-card">
+            <h2 class="section-title">Interests</h2>
+            <div class="interests-list">
+                <span class="interest-item">Web Design</span>
+                <span class="interest-item">Graphic Design</span>
+                <span class="interest-item">Dancing</span>
+                <span class="interest-item">Music</span>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="glass-card">
+            <h2 class="section-title">Get In Touch</h2>
+            <form action="index.html" method="post">
+                <label for="first-name">First Name</label>
+                <input id="first-name" name="first-name" type="text" placeholder="First Name" required />
+
+                <label for="last-name">Last Name</label>
+                <input id="last-name" name="last-name" type="text" placeholder="Last Name" required />
+
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="Enter Email" required />
+
+                <label for="phone-number">Phone Number</label>
+                <input id="phone-number" name="phone-number" type="tel" placeholder="Phone Number" required />
+
+                <label for="service">Select Service</label>
+                <select name="service" id="service" required>
+                    <option value="">--Please choose an option--</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="Content Creation">Content Creation</option>
+                    <option value="Consultation">Consultation</option>
+                </select>
+
+                <label for="additional-text">Additional Text</label>
+                <textarea name="additional-text" id="additional-text" cols="30" rows="5" placeholder="Your message (min 30 characters)" minlength="30"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </div>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#interests">Interests</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div>
+            <ul>
+                <li><a href="https://www.instagram.com/nakhaima.isaac/" target="_blank"><img src="svgs/instagram.svg" width="20" alt="Instagram"></a></li>
+                <li><a href="https://www.facebook.com/sur.nakhaima" target="_blank"><img src="svgs/facebook.svg" width="20" alt="Facebook"></a></li>
+                <li><a href="https://www.tiktok.com/@royal.graphics.so" target="_blank"><img src="svgs/tiktok.svg" width="20" alt="TikTok"></a></li>
+                <li><a href="https://www.linkedin.com/in/isaac-nakhaima" target="_blank"><img src="svgs/linkedin.svg" width="20" alt="LinkedIn"></a></li>
+            </ul>
+            <div>
+            <p style="color: #011223;">&copy; 2025 Isaac Nakhaima</p>
+            </div>
+           
+        </div>
     </footer>
+</body>
+
+</body>
 </html>
-   
-   
